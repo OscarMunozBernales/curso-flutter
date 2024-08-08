@@ -25,7 +25,7 @@ void main() {
   //reverseNumber.toSet transforma in iterable en un tipo de dato set y se identifica con {}, ademas si tenemos datos duplicados el sets los elimina.
   final setNumber = reverseNumber.toSet();
   
-  final numberGreaterThan5 = numbers.where( (num) {
+  final numberGreaterThan5 = numbers.where( (int num) {
     return num > 5;
   });
   
