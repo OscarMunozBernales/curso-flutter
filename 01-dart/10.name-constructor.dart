@@ -1,9 +1,20 @@
 void main() {
-  final Hero ironman = Hero(name: 'Tony Stark', power: 'Money', isAlive: false);
+  final Map<String, dynamic> rawJson = {
+    "name": 'Tony Stark',
+    "power": 'Dinero',
+    "isAlive": false
+  };
 
-  print(ironman);
+  final ironman2 = Hero.fromJson(rawJson);
+  
+  print(ironman2.toString());
+
+  final ironman = Hero(name: 'Tony Stark', power: 'Dinero', isAlive: false);
+
+//   print(ironman.toString());
 }
 
+// Dentro de una clase podemos crear más de un constructor, generalmente estos contructores son llamados con el nombre de la clase
 class Hero {
   String name;
   String power;
@@ -11,8 +22,13 @@ class Hero {
 
   Hero({required this.name, required this.power, required this.isAlive});
 
+  Hero.fromJson( Map<String, dynamic> json)
+      : name = json['name'] ?? 'No name found',
+        power = json['power'] ?? 'No power found',
+        isAlive = json['isAlive'] ?? 'No is Alivefound';
+
   @override
   String toString() {
-    return 'name: ${name}, power: ${power}, is alive ${isAlive ? 'Yes' : 'Nop D: '}';
+    return "Name: ${this.name}, Power: ${this.power}, is alive: ${this.isAlive ? 'Yes' : 'No D:'}";
   }
 }
